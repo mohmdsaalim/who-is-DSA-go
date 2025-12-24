@@ -7,7 +7,7 @@ type User struct{
 	age int
 } 
 
-var neww []int
+var neww []int// *
 var arrr =  make([]int, 10)// initializing  a Slice -  O(n)ST
 
 func main() {
@@ -24,7 +24,7 @@ func r(a []int, b int){
 	for i := 0; i < len(a); i++{
 		for j := i+1; j < len(a); j++{
 			if a[i]+a[j] == b{
-				neww = append(neww, a[i], a[j])
+				neww = append(neww, a[i], a[j])// *
 			}
 		}
 		

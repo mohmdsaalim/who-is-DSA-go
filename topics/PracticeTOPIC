@@ -1,0 +1,10 @@
+1. make vs new
+	•	When do you use each?
+
+2. nil vs empty
+	•	Difference between nil slice and empty slice?
+3. Maps
+	•	What happens when you read a non-existing key?
+
+4. Interfaces (basic)
+	•	What does it mean that interfaces are implicitly implemented?
