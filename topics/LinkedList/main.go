@@ -6,14 +6,12 @@ type Node struct {
 	Data int
 	Next *Node
 }
-
 // Insert value at beginning
 func Insert(head **Node, data int) {
 	newNode := &Node{Data: data}
 	newNode.Next = *head
 	*head = newNode
 }
-
 // Print linked list
 func PrintList(head *Node) {
 	for head != nil {
@@ -22,9 +20,10 @@ func PrintList(head *Node) {
 	}
 	fmt.Println("nil")
 }
-
 func main() {
 	var head *Node = nil // empty list
+	
+fmt.Println(&head)
 
 	Insert(&head, 10)
 	PrintList(head)
