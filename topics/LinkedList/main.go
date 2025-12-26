@@ -2,35 +2,39 @@ package main
 
 import "fmt"
 
-type Node struct {
+type node struct{
 	Data int
-	Next *Node
+	Next *node
 }
-// Insert value at beginning
-func Insert(head **Node, data int) {
-	newNode := &Node{Data: data}
-	newNode.Next = *head
-	*head = newNode
+type LinkedList struct{
+	head *node
+	length int
 }
-// Print linked list
-func PrintList(head *Node) {
-	for head != nil {
-		fmt.Print(head.Data, " -> ")
-		head = head.Next
+func (l *LinkedList) prepend(n *node){
+	second := l.head
+	l.head = n
+	l.head.Next = second
+	l.length++
+}
+
+func (l LinkedList) printData(){
+	toprint := l.head
+	for l.length != 0{
+		fmt.Printf("%d ", toprint.Data)
+		toprint = toprint.Next
+		l.length--
 	}
-	fmt.Println("nil")
+	fmt.Printf("\n")
 }
+
 func main() {
-	var head *Node = nil // empty list
-	
-fmt.Println(&head)
+	myList := LinkedList{}
+	node1 := &node{Data: 10}
+	node2 := &node{Data: 12}
+	node3 := &node{Data: 13}
+	myList.prepend(node1)
+	myList.prepend(node2)
+	myList.prepend(node3)
 
-	Insert(&head, 10)
-	PrintList(head)
-
-	Insert(&head, 20)
-	PrintList(head)
-
-	Insert(&head, 30)
-	PrintList(head)
+myList.printData()
 }
