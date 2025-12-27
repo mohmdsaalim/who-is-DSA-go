@@ -5,6 +5,8 @@
 // var newarray []int
 // var firstarray []int
 
+// not DSA 
+
 // func main() {
 // 	arr := []int{6,2,3,4,6,7,9,6,7,6}
 // 	for _,v := range arr{
@@ -57,6 +59,7 @@ func main() {
 //     return newarray
 //     }
 
+// DSA based solution
     func twoSum(nums []int, target int) []int {
     m := make(map[int]int)
 
