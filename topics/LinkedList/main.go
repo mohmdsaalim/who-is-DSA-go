@@ -1,5 +1,5 @@
 package main
-
+//LinkedList - Append, Delete, Display
 import "fmt"
 
 type Node struct{
@@ -75,13 +75,19 @@ func (l *LinkedList) Display(){
 		fmt.Print("nil")
 }
 
-func main() {
-list := NewList()
 
-list.Append(10)
+func main() {
+	// array
+	list := NewList()
+	Arr := []int{2,3,4,5,6,7}
+	for _,v := range Arr{
+		list.Append(v)
+		
+	}
+
 list.Append(20)
 list.Append(30)
 
-list.Delete(20)
+list.Delete(2)
 list.Display()
 }
