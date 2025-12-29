@@ -1,3 +1,4 @@
+// Queue the first in first out
 package main
 
 import "fmt"
