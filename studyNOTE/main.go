@@ -1,114 +1,202 @@
+// package main
+
+// import "fmt"
+// type Node struct{
+// 	Data int
+// 	Prev *Node
+// 	Next *Node
+// }
+
+// type LinkedList struct{
+// 	head *Node
+// }
+// func SetList() *LinkedList {
+// 	return &LinkedList{}
+// }
+// // empty chk
+// func (l *LinkedList) IsEmpty() bool{
+// 	return l.head == nil
+// }
+// // append
+// func (l *LinkedList) Append(val int) {
+// 	newnode := &Node{Data: val}
+
+// 	if l.IsEmpty() {
+// 		l.head = newnode
+// 		return
+// 	}
+// 	current := l.head
+// 	for current.Next != nil{
+// 		current = current.Next
+// 	}
+// 	current.Next = newnode
+// 	newnode.Prev = current
+// }
+
+// // prepend
+// func (l *LinkedList) Prepend(val int){
+// 	newnode := &Node{Data: val}
+
+// 	if l.head != nil{
+// 		newnode.Next = l.head
+// 		l.head.Prev = newnode
+// 	}
+// 	l.head = newnode
+// }
+
+// // delete
+// func (l *LinkedList) Delete(val int){
+// 	// checking is empty
+// 	if l.IsEmpty(){
+// 		fmt.Println("There is no value")
+// 		return
+// 	}
+
+// 	current := l.head
+// 	for current != nil{
+// 		if current.Data == val{
+// 			if current.Prev != nil{
+// 				current.Prev.Next = current.Next
+// 			}else{
+// 				l.head = current.Next
+// 			}
+
+// 			if current.Next != nil{
+// 				current.Next.Prev = current.Prev
+// 			}
+// 			fmt.Println("deleted")
+// 			return
+// 		}
+// 		current = current.Next
+// 	}
+// 	fmt.Println("no value found")
+// }
+
+// // Display
+// func (l *LinkedList) Display(){
+// 	if l.IsEmpty(){
+// 		fmt.Println("NO value")
+// 		return
+// 	}
+// 	current := l.head
+// 	fmt.Print("Head --> ")
+// 	for current != nil{
+// 		fmt.Printf("%d <--> ", current.Data)
+// 		current = current.Next
+// 	}
+// fmt.Println("Nill")
+// }
+// func main() {
+// 	list := SetList()
+// 	list.Append(10)
+// 	list.Append(20)
+// 	list.Append(30)
+// 	list.Append(60)
+// 	list.Append(40)
+// 	list.Append(50)
+
+// 	list.Delete(30)
+// 	list.Display()
+
+// }
 package main
 
 import "fmt"
 
-//nodes
 type Node struct{
 	Data int
-	next *Node
+	Next *Node
 }
-
-
-//list
 type LinkedList struct{
 	head *Node
 }
-
-
-// Newnode
-func SingleList() *LinkedList{
+// cr func
+func List() *LinkedList{
 	return &LinkedList{}
 }
-
-
 // empty check
-func (l *LinkedList) IsEmpty() bool {
+func (l LinkedList)IsEmpty()bool{
 	return l.head == nil
 }
+// append
+func (l *LinkedList) Append(val int){
+	newNode := &Node{Data: val}
 
-
-
-//append
-func (l *LinkedList)Append(val int){
-newNode := &Node{Data: val}
 	if l.IsEmpty(){
 		l.head = newNode
 		return
 	}
 	current := l.head
-	for current.next != nil{
-		 current = current.next 
+	for current.Next != nil{
+		current = current.Next
 	}
-	current.next = newNode
+	current.Next = newNode
 }
-
-
-// Display 
-func (l LinkedList) Dipaly()  {
+// Display
+func (l *LinkedList) Display(){
 	if l.IsEmpty(){
-		fmt.Println("No Value in LinkedList")
-		return
+		fmt.Print("No Value")
 	}
 	current := l.head
-	fmt.Print("Head --> ")
+	fmt.Print("Head -> ")
 	for current != nil{
-		fmt.Printf("%d -->", current.Data)
-		current = current.next
+		fmt.Printf(" %d -> ", current.Data)
+		current = current.Next
 	}
-	fmt.Print("nill \n")
+	fmt.Print("Nil")
 }
+// search
+func (l *LinkedList) srch(val int){
+	current := l.head
 
-
-//delete
-func (l *LinkedList) Delete(val int)  {
-	if l.IsEmpty(){
-		fmt.Println("There no value in LinkedList")
+	for current != nil{
+		if current.Data == val {
+			fmt.Printf("The value %d is available ",current.Data)
+			return
+		}
+		current = current.Next
 	}
-	if l.head.Data == val{
-		l.head = l.head.next
+	fmt.Println("The value is not available")
+}
+// delete
+func (l *LinkedList) Delete(val int) {
+	if l.IsEmpty() {
+		fmt.Println("there is no value to delete")
 		return
 	}
-	prev := l.head
-	current := l.head.next
 
-	for current != nil{
-		if current.Data == val{
-			prev.next = current.next
+	// Case 1: delete head
+	if l.head.Data == val {
+		l.head = l.head.Next
+		fmt.Println("value deleted")
+		return
+	}
+
+	prev := l.head
+	current := l.head.Next
+
+	for current != nil {
+		if current.Data == val {
+			prev.Next = current.Next
+			fmt.Println("value deleted")
 			return
 		}
 		prev = current
-		current = current.next
+		current = current.Next
 	}
-	fmt.Printf("value not fount %d\n",val)
+
+	fmt.Println("value not found")
 }
-
-
-// SEARCH 
-func (l *LinkedList) Search(val int) bool{
-	if l.IsEmpty(){
-		fmt.Println("There no Value")
-	}
-	current := l.head
-	for current != nil{
-		if current.Data == val{
-			fmt.Println("value fount", val)
-			return true
-		}
-		current = current.next
-	}
-	fmt.Println("No value in list", val)
-	return false
-}
-
-
-// MAIN
 func main() {
-	list := SingleList()
-	list.Append(10)
-	list.Append(20)
-	list.Append(30)
-	list.Append(40)
-	list.Delete(1)
-	list.Dipaly()
-	list.Search(10)
+	ll := List()
+	ll.Append(10)
+	ll.Append(20)
+	ll.Append(30)
+	ll.Append(40)
+
+	ll.Delete(10)
+	//display
+	ll.Display()
+	ll.srch(20)
+	
 }
