@@ -3,71 +3,77 @@ package main
 import "fmt"
 
 type Node struct {
-	Data int
+	Value int
 	Next *Node
 }
 
-type Linkedlist struct {
-	Head *Node
+type Stack struct{
+	top *Node
+	size int
 }
-// node
-func NewList()  *Linkedlist{
-	return &Linkedlist{}
+// empty chk func
+func (s Stack) IsEmpty() bool {
+	return s.top == nil	
 }
-// append
-func (l *Linkedlist) Append(val int) {
-	newnode := &Node{Data: val}
-
-	if l.Head == nil{
-		l.Head = newnode
-		return
+// creating func
+func NewStack() *Stack {
+	return &Stack{top: nil, size: 0}
+}
+// Push
+func (s *Stack) Push(val int){
+	newnode := &Node{
+		Value: val,
+		Next: s.top,
 	}
-
-	current := l.Head
-	for current.Next != nil{
-		current = current.Next
+	s.top = newnode
+	s.size ++
+}
+// Display
+func (s Stack) Display(){
+	if s.IsEmpty() {
+		fmt.Println("No value in Stack")
 	}
-	current.Next = newnode
-
-}
-// Delete 
-func (l *Linkedlist) Delete(val int){
-		if l.Head == nil{
-			fmt.Println("no value")
-		}
-		// head
-		if l.Head.Data == val{
-			l.Head = l.Head.Next
-		}
-		// looping
-		prev := l.Head
-		current := l.Head.Next
-		for current!= nil{
-			if current.Data == val{
-				prev.Next = current.Next
-			}
-			prev = current
-			current = current.Next
-		}
-}
-//Display
-func (l Linkedlist) Display() {
-
-if l.Head == nil{
-	fmt.Println("There is no value to display")
-}	
-current := l.Head
+	current :=s.top
+	fmt.Println("Top")
 	for current != nil{
-		fmt.Printf("%d ->",current.Data)
+		fmt.Println(current.Value)
 		current = current.Next
 	}
+	fmt.Println("bottom")
+}
+// pop
+func (s *Stack) Pop() (int, bool) {
+	if s.IsEmpty() {
+		return 0 , false
+	}
+	val := s.top.Value
+	s.top = s.top.Next
+	s.size --
+	return val, true
+}
+// peek
+func (s Stack) peek()(int, bool){
+	if s.IsEmpty(){
+		return 0, false
+	}
+	return s.top.Value, true
 }
 func main() {
-	ll := NewList()
-	ll.Append(10)
-	ll.Append(20)
-	ll.Append(30)
-	ll.Append(40)
-	ll.Delete(10)
-	ll.Display()
+	s := NewStack()
+	// Push
+	s.Push(10)
+	s.Push(20)
+	s.Push(30)
+	s.Push(40)
+	s.Display()
+	if v, ok := s.Pop(); ok{
+		fmt.Println("Popped", v)
+	}
+	if v, ok :=s.peek();ok{
+		fmt.Println("peek", v)
+	}
+	// displaying
+	s.Display()
+
+	//Pop
 }
