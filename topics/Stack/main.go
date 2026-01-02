@@ -1,56 +1,98 @@
-// package main
-
-// import "fmt"
-
-// type Stack struct{
-// 	Data []int
-// }
-// // push
-
-// func (s *Stack) push(val int){
-// 	s.Data = append(s.Data, val)
-// }
-
-// // pop
-// func (s *Stack) pop() int {
-// l := len(s.Data)-1
-// Tr := s.Data[l]
-// s.Data = s.Data[:l]
-// return Tr
-// }
-
-
-// func main() {
-// 	stack := Stack{}
-// 	stack.push(10)
-// 	stack.push(20)
-// 	stack.push(30)
-// 	stack.push(40)
-// 	fmt.Println(stack)
-// 	stack.pop()
-// 	fmt.Println(stack)
-
-// }
-
-
 package main
 
-import (
-    "fmt"
-    "strings"
-)
+import "fmt"
 
-func WordFrequency(s string) map[string]int {
-    freq := make(map[string]int)
-    words := strings.Fields(s)
-
-    for _, word := range words {
-        freq[word]++
-    }
-    return freq
+// Node structure
+type Node struct {
+	Value int
+	Next  *Node
 }
 
+// Stack structure
+type Stack struct {
+	top  *Node
+	size int
+}
+
+// Create new stack
+func NewStack() *Stack {
+	return &Stack{
+		top:  nil,
+		size: 0,
+	}
+}
+
+// Push (O(1))
+func (s *Stack) Push(val int) {
+	newnode := &Node{
+		Value: val,
+		Next:  s.top,
+	}
+	s.top = newnode
+	s.size++
+}
+
+// Pop (O(1))
+func (s *Stack) Pop() (int, bool) {
+	if s.top == nil {
+		return 0, false
+	}
+	val := s.top.Value
+	s.top = s.top.Next
+	s.size--
+	return val, true
+}
+
+// Peek (O(1))
+func (s *Stack) Peek() (int, bool) {
+	if s.top == nil {
+		return 0, false
+	}
+	return s.top.Value, true
+}
+
+// IsEmpty
+func (s *Stack) IsEmpty() bool {
+	return s.size == 0
+}
+
+// Size
+func (s *Stack) Size() int {
+	return s.size
+}
+
+// Display
+func (s *Stack) Display() {
+	if s.top == nil {
+		fmt.Println("Stack is empty")
+		return
+	}
+	fmt.Print("Top -> ")
+	current := s.top
+	for current != nil {
+		fmt.Print(current.Value, " ")
+		current = current.Next
+	}
+	fmt.Println()
+}
+
+// Main function
 func main() {
-    text := "go is fast go is simple"
-    fmt.Println(WordFrequency(text))
+	stack := NewStack()
+
+	stack.Push(10)
+	stack.Push(20)
+	stack.Push(30)
+
+	stack.Display()
+
+	val, _ := stack.Pop()
+	fmt.Println("Popped:", val)
+
+	stack.Display()
+
+	top, _ := stack.Peek()
+	fmt.Println("Top element:", top)
+
+	fmt.Println("Size:", stack.Size())
 }

@@ -1,0 +1,79 @@
+
+QUEUE OPERATIONS – TIME & SPACE COMPLEXITY
+
+Queue (FIFO) implemented using Linked List or Array
+
+Diagram:
+Front                               Rear
+ ↓                                   ↓
+[10] -> [20] -> [30] -> nil
+
+1️⃣ EnQueue (Insert)
+   - Description: Insert element at the rear
+   - Diagram:
+       Before: Front -> 10 -> 20
+       After : Front -> 10 -> 20 -> 30
+   - Time Complexity: O(1)
+   - Space Complexity: O(1)
+
+2️⃣ DeQueue (Remove)
+   - Description: Remove element from the front
+   - Diagram:
+       Before: Front -> 10 -> 20 -> 30
+       After : Front -> 20 -> 30
+   - Time Complexity: O(1)
+   - Space Complexity: O(1)
+
+3️⃣ Peek
+   - Description: View front element
+   - Diagram:
+       Front element = 10
+   - Time Complexity: O(1)
+   - Space Complexity: O(1)
+
+4️⃣ IsEmpty
+   - Description: Check if queue is empty
+   - Diagram:
+       front == nil  → Queue is empty
+   - Time Complexity: O(1)
+   - Space Complexity: O(1)
+
+5️⃣ Size
+   - Description: Get number of elements in queue
+   - Time Complexity: O(1)
+   - Space Complexity: O(1)
+
+6️⃣ Display
+   - Description: Print elements from front to rear
+   - Diagram:
+       Front -> 10 -> 20 -> 30 <- Rear
+   - Time Complexity: O(n)
+   - Space Complexity: O(1)
+
+KEY RULE:
+- Insert at Rear
+- Remove from Front
+- Follows FIFO (First In First Out)
+
+
+
+
+/*
+QUEUE OPERATIONS – TIME & SPACE COMPLEXITY TABLE
+
++-----------+-------------------------------+-----------------+------------------+
+| Operation | Description                   | Time Complexity | Space Complexity |
++-----------+-------------------------------+-----------------+------------------+
+| EnQueue   | Insert element at rear        | O(1)            | O(1)             |
+| DeQueue   | Remove element from front     | O(1)            | O(1)             |
+| Peek     | View front element             | O(1)            | O(1)             |
+| IsEmpty  | Check if queue is empty        | O(1)            | O(1)             |
+| Size     | Get number of elements         | O(1)            | O(1)             |
+| Display  | Print all elements             | O(n)            | O(1)             |
++-----------+-------------------------------+-----------------+------------------+
+
+Notes:
+- Queue follows FIFO (First In First Out)
+- Insertion happens at Rear
+- Deletion happens at Front
+*/

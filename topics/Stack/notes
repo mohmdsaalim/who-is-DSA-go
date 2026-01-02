@@ -1,0 +1,73 @@
+
+STACK OPERATIONS – TIME & SPACE COMPLEXITY
+
+Stack (LIFO) implemented using Linked List or Array
+
+Operations:
+
+  Top
+   ↓
+  [30] <- Node / Array element at top
+  [20]
+  [10]
+
+1️⃣ Push
+   - Description: Insert element at top
+   - Diagram:
+       Before: Top -> 20 -> 10
+       After : Top -> 30 -> 20 -> 10
+   - Time Complexity: O(1)
+   - Space Complexity: O(1)
+
+2️⃣ Pop
+   - Description: Remove top element
+   - Diagram:
+       Before: Top -> 30 -> 20 -> 10
+       After : Top -> 20 -> 10
+   - Time Complexity: O(1)
+   - Space Complexity: O(1)
+
+3️⃣ Peek
+   - Description: View top element
+   - Diagram:
+       Top element = 30
+   - Time Complexity: O(1)
+   - Space Complexity: O(1)
+
+4️⃣ IsEmpty
+   - Description: Check if stack is empty
+   - Time Complexity: O(1)
+   - Space Complexity: O(1)
+
+5️⃣ Size
+   - Description: Get number of elements
+   - Time Complexity: O(1)
+   - Space Complexity: O(1)
+
+6️⃣ Display
+   - Description: Print all elements from top to bottom
+   - Diagram:
+       Top -> 30 -> 20 -> 10
+   - Time Complexity: O(n)
+   - Space Complexity: O(1)
+
+
+
+/*
+STACK OPERATIONS – TIME & SPACE COMPLEXITY TABLE
+
++-----------+-------------------------------+-----------------+------------------+
+| Operation | Description                   | Time Complexity | Space Complexity |
++-----------+-------------------------------+-----------------+------------------+
+| Push      | Insert element at top         | O(1)            | O(1)             |
+| Pop       | Remove element from top       | O(1)            | O(1)             |
+| Peek     | View top element               | O(1)            | O(1)             |
+| IsEmpty  | Check if stack is empty        | O(1)            | O(1)             |
+| Size     | Get number of elements         | O(1)            | O(1)             |
+| Display  | Print all elements             | O(n)            | O(1)             |
++-----------+-------------------------------+-----------------+------------------+
+
+Notes:
+- Stack follows LIFO (Last In First Out)
+- All operations except Display work on the top element
+*/
