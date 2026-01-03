@@ -1,0 +1,55 @@
+A linked list is a data structure where elements are stored as nodes, 
+and each node contains a value and a link to the next node. Unlike 
+arrays, linked lists do not store data in continuous memory.
+
+SINGLY LINKED LIST – TIME & SPACE COMPLEXITY
+
+Operation                Time Complexity     Space Complexity
+------------------------------------------------------------
+Insert at Head           O(1)                O(1)
+Insert at Tail (Append)  O(n)                O(1)
+Insert at Index          O(n)                O(1)
+
+Delete at Head           O(1)                O(1)
+Delete at Tail           O(n)                O(1)
+Delete by Value          O(n)                O(1)
+
+Search                   O(n)                O(1)
+Access by Index          O(n)                O(1)
+Traversal (Display)      O(n)                O(1)
+
+
+
+
+========================
+STACK – TIME & SPACE COMPLEXITY
+========================
+
+Operation        Time Complexity     Space Complexity
+----------------------------------------------------
+Push             O(1)                O(1)
+Pop              O(1)                O(1)
+Peek / Top       O(1)                O(1)
+IsEmpty          O(1)                O(1)
+Size             O(1)                O(1)
+Display          O(n)                O(1)
+
+
+
+
+
+
+
+
+========================
+QUEUE – TIME & SPACE COMPLEXITY
+========================
+
+Operation        Time Complexity     Space Complexity
+----------------------------------------------------
+Enqueue          O(1)                O(1)
+Dequeue          O(1)                O(1)
+Front / Peek     O(1)                O(1)
+IsEmpty          O(1)                O(1)
+Size             O(1)                O(1)
+Display          O(n)                O(1)
