@@ -27,3 +27,5 @@ func Selection(arr []int) []int {
 // a[j], a[min] = a[min] = a[j]
 // }
 // }
+
+
