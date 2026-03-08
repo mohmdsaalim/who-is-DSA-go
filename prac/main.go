@@ -4,29 +4,27 @@ import "fmt"
 
 func main() {
 	arr := []int{1,3,4,1,1,3,4,45,45,5,6,567,5,4,334,34,1,2}
-	// a  := BubbleSort(arr)
-	b := selection_sort(arr)
-	// fmt.Println(a)
-	fmt.Println(b)
+	a  := BubbleSort(arr)  
+	// b := selection_sort(arr)
+	fmt.Println(a)  
+	// fmt.Println(b)
 
 }
 
 func BubbleSort(a []int) []int {
 	n := len(a)
-	arr := a
 
-	for i := 0; i < n-1; i++{
+	for i := 0; i < n-1; i ++{
 		for j := 0; j < n-i-1; j++{
-			if arr[j] > arr[j+1]{
-				arr[j], arr[j+1] = arr[j+1], arr[j]
+			if a[j] > a[j+1]{
+				a[j], a[j+1] = a[j+1], a[j]
 			}
 		}
 	}
-	return arr
+	return a
 }
 
 // swapping 
-
 func selection_sort(a []int) []int {
 	
 	arr := a
@@ -42,6 +40,7 @@ func selection_sort(a []int) []int {
 		}
 		arr[i], arr[min] = arr[min], arr[i]
 	}
+	fmt.Println(arr)
 	return arr
 }
 
