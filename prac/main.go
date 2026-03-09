@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	arr := []int{1,3,4,1,1,3,4,45,45,5,6,567,5,4,334,34,1,2}
@@ -43,4 +45,6 @@ func selection_sort(a []int) []int {
 	fmt.Println(arr)
 	return arr
 }
+
+
 
