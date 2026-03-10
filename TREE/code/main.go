@@ -29,15 +29,16 @@ func Inorder(root *Node)  {
 	fmt.Print(root.Val, "-> ")
 	Inorder(root.Right)
 }
+// post order
 func Postorder(root *Node)  {
 	if root == nil{
 		return
 	}
-
 	Postorder(root.Left)
 	Postorder(root.Right)
 	fmt.Print(root.Val, "-> ")
 }
+// pre order
 func preorder(root *Node)  {
 	if root == nil{
 		return
@@ -47,7 +48,9 @@ func preorder(root *Node)  {
 	Postorder(root.Right)
 
 }
+
 func main() {
+
 	var root *Node
 
 	root = Insert(root, 10)
@@ -67,4 +70,18 @@ func main() {
 
 	fmt.Println("pre order")
 	preorder(root)
+}
+
+
+func In(root *Node)  {
+	if root == nil{
+		return
+	}
+	In(root.Left) // l 
+	fmt.Print(root.Val, "->") // root
+	In(root.Right) // right
+	
+	// root-> left-> right pre
+	// post left-> right -> root
+
 }
