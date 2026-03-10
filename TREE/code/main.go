@@ -85,3 +85,5 @@ func In(root *Node)  {
 	// post left-> right -> root
 
 }
+
+//    complted 3leetcode based on traversal
