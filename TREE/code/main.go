@@ -4,86 +4,81 @@ import "fmt"
 
 type Node struct {
 	Val int
-	Left *Node
-	Right *Node
+	left *Node
+	right *Node
 }
 
-// insert into tree
-func Insert(root *Node, val int) *Node {
-	if root == nil {
+func insert(root *Node, val int) *Node {
+	if root == nil{
 		return &Node{Val: val}
 	}
 	if val < root.Val{
-		root.Left = Insert(root.Left, val)
+		root.left = insert(root.left, val)
 	}else{
-		root.Right = Insert(root.Right, val)
+		root.right = insert(root.right, val)
 	}
+
 	return root
 }
-// in order 
+
+
+func Search(root *Node, val int) bool {
+	if root == nil{
+		return false
+	}
+	if root.Val == val{
+		return true
+	}
+	if val < root.Val{
+		return Search(root.left, val)
+	}
+	return Search(root.right, val)
+}
+
+
 func Inorder(root *Node)  {
 	if root == nil{
 		return
 	}
-	Inorder(root.Left)
-	fmt.Print(root.Val, "-> ")
-	Inorder(root.Right)
+	Inorder(root.left)
+	fmt.Print(root.Val, "-")
+	Inorder(root.right)
 }
-// post order
-func Postorder(root *Node)  {
-	if root == nil{
-		return
-	}
-	Postorder(root.Left)
-	Postorder(root.Right)
-	fmt.Print(root.Val, "-> ")
-}
-// pre order
+
 func preorder(root *Node)  {
 	if root == nil{
 		return
 	}
-	fmt.Print(root.Val, "-> ")
-	Postorder(root.Left)
-	Postorder(root.Right)
-
+	fmt.Print(root.Val, "-")
+	Inorder(root.left)
+	Inorder(root.right)
 }
 
-func main() {
-
-	var root *Node
-
-	root = Insert(root, 10)
-	root = Insert(root, 1)
-	root = Insert(root, 2)
-	root = Insert(root, 20)
-	root = Insert(root, 30)
-	root = Insert(root, 3)
-	root = Insert(root, 4)
-
-
-	fmt.Println("Inorder")
-	Inorder(root)
-
-	fmt.Println("post order")
-	Postorder(root)
-
-	fmt.Println("pre order")
-	preorder(root)
-}
-
-
-func In(root *Node)  {
+func postorder(root *Node)  {
 	if root == nil{
 		return
 	}
-	In(root.Left) // l 
-	fmt.Print(root.Val, "->") // root
-	In(root.Right) // right
-	
-	// root-> left-> right pre
-	// post left-> right -> root
-
+	Inorder(root.left)
+	Inorder(root.right)
+	fmt.Print(root.Val, "-")
 }
 
-//    complted 3leetcode based on traversal
+
+func main() {
+	var root *Node
+	root = insert(root, 10)
+	root = insert(root, 1)
+	root = insert(root, 2)
+	root = insert(root, 3)
+	root = insert(root, 11)
+	root = insert(root, 12)
+	root = insert(root, 13)
+	
+
+	fmt.Println("helo")
+	Inorder(root)
+	a := Search(root, 1)
+	fmt.Println(a)
+	// postorder(root)
+	// preorder(root)
+}
