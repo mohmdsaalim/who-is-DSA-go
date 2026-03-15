@@ -1,5 +1,8 @@
 package insertionsort
 
+// import "fmt"
+
+
 func Insertion(a []int) []int {
 
 	arr := a
@@ -15,4 +18,3 @@ func Insertion(a []int) []int {
 	}
 	return arr
 }
-

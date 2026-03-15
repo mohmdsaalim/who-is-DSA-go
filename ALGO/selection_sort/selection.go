@@ -10,7 +10,7 @@ func Selection(arr []int) []int {
 		
 		for j := i+1; j < n; j++{
 			if a[j] < a[min]{
-				a[min] = j
+				min = j
 			}
 		}
 		a[i], a[min] = a[min], a[i]
