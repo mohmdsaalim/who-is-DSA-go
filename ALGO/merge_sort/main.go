@@ -1,4 +1,14 @@
-package mergesort
+package main
+
+import "fmt"
+
+func main() {
+	arr := []int{6,5,4,3,2,1}
+	Newarr := mergeSort(arr)
+
+	fmt.Println(Newarr)
+
+}
 
 func mergeSort(arr []int) []int {
 
