@@ -2,43 +2,36 @@ package main
 
 import "fmt"
 
+func quick(arr []int, low, high int)  {
+	if low < high{
+		p := partition(arr, low, high)
 
+		quick(arr, low, p-1)
+		quick(arr, p+1, high)
 
-func main() {
-	arr := []int{65,4,3,42,1}
-	a := mergeSort(arr)
-	fmt.Println(a)
-}
-
-func mergeSort(arr []int) []int {
-	if len(arr) <= 1{
-		return arr
 	}
-
-	mid := len(arr) / 2
-
-	left := mergeSort(arr[:mid])
-	right := mergeSort(arr[mid:])
-
-	return merge(left,  right)
 }
 
-func merge(left, right []int) []int {
-	result := []int{}
+func partition(arr []int, low, high int) int  {
+	pivot := arr[high]
 
-	i := 0
-	j := 0
+	i := low -1
 
-	for i < len(left) && j < len(right) {
-		if left[i] <right[j]{
-			result = append(result, left[i])
+	for j := low; j < high; j++{
+		if arr[j] < pivot{
 			i++
-		}else{
-			result = append(result, right[j])
-			j++
+			arr[i], arr[j] = arr[j], arr[i]
 		}
 	}
-	result = append(result, left[i:]...)
-	result = append(result, right[j:]...)
-	return result
+	arr[i+1], arr[high] = arr[high], arr[i+1]
+	return i+1
+}
+
+func main() {
+	arr := []int{6,5,4,3,2,1}
+
+	quick(arr, 0, len(arr)-1)
+	fmt.Println(
+		arr,
+	)
 }
