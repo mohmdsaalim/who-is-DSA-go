@@ -1,21 +1,15 @@
 package main
-
 import "fmt"
-
 func main() {
 	arr := []int{6,5,4,3,2,1}
 	Newarr := mergeSort(arr)
-
 	fmt.Println(Newarr)
-
 }
-
 func mergeSort(arr []int) []int {
 
 	if len(arr) <= 1 {
 		return arr
 	}
-
 	mid := len(arr) / 2
 
 	left := mergeSort(arr[:mid])
@@ -27,7 +21,6 @@ func mergeSort(arr []int) []int {
 func merge(left, right []int) []int {
 
 	result := []int{}
-
 	i := 0
 	j := 0
 
@@ -41,7 +34,6 @@ func merge(left, right []int) []int {
 			j++
 		}
 	}
-
 	result = append(result, left[i:]...)
 	result = append(result, right[j:]...)
 
