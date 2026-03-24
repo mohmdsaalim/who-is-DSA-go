@@ -1,20 +1,41 @@
 package main
 
-func heapsort(arr []int)  {
-	n := len(arr)
+import "fmt"
 
-	for i := n/2-1; i>=0; i++{
-		heapfy(arr, n, i)
+func mergesort(arr []int) []int {
+	if len(arr) <= 1{
+		return arr
 	}
-
-	for i := n-1; i > 0 ; i--{
-		arr[0], arr[i] = arr[i], arr[0]
-		heapfy(arr, i, 0)
-	}
-}
-func heapfy(arr []int, n, i int)  {
+	mid := len(arr) / 2
 	
+	left := mergesort(arr[:mid])
+	right := mergesort(arr[mid:])
+
+	return merge(left, right)
+}
+
+func merge(left, right []int) []int {
+	r := []int{}
+
+	j := 0
+	i := 0
+
+	for i < len(left) && j < len(right) {
+		if left[i] < right[j] {
+			r = append(r, left[i])
+			i++
+		}else{
+			r = append(r, right[j])
+			j++
+		}
+	}
+	r = append(r, left[i:]...)
+	r = append(r, right[j:]...)
+	return r
 }
 func main() {
+	arr := []int{6,5,4,3,2,1}
+	a := mergesort(arr)
+	fmt.Println(a)
 	
 }

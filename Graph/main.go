@@ -26,6 +26,48 @@ func (g *Graph) Print() {
 		fmt.Println(v, "->", adj)
 	}
 }
+// DFS
+func (g *Graph) DFS(v int, visited map[int]bool) {
+	visited[v] = true
+	fmt.Print(v, " ")
+
+	for _, n := range g.vertices[v] {
+		if !visited[n] {
+			g.DFS(n, visited)
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // BFS
 func (g *Graph) BFS(start int) {
@@ -49,19 +91,6 @@ func (g *Graph) BFS(start int) {
 	}
 	fmt.Println()
 }
-
-// DFS
-func (g *Graph) DFS(v int, visited map[int]bool) {
-	visited[v] = true
-	fmt.Print(v, " ")
-
-	for _, n := range g.vertices[v] {
-		if !visited[n] {
-			g.DFS(n, visited)
-		}
-	}
-}
-
 func main() {
 	g := &Graph{}
 
