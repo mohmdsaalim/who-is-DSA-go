@@ -77,3 +77,8 @@ func main() {
 
 	//Pop
 }
+
+//LInked list 
+func a()  {
+	
+}
